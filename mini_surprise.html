@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Out With Me?</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column; /* Stack elements in a column */
+            justify-content: center;
+            align-items: center;
+            background: url('https://wallpapercave.com/wp/wp8538159.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            width: 400px;
+            padding: 30px;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #c70039;
+            /* Romantic red color */
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 20px;
+            color: #fff;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        #yesButton {
+            background: linear-gradient(to right, #4caf50, #2e7d32);
+            /* Green gradient for 'Yes' */
+        }
+
+        #noButton {
+            background: linear-gradient(to right, #e74c3c, #c0392b);
+            /* Red gradient for 'No' */
+            position: relative;
+        }
+
+        #noButton:hover {
+            transform: scale(1.1);
+        }
+
+        #yesButton:hover {
+            transform: scale(1.1);
+        }
+
+        #responseText {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #2e7d32;
+            display: none;
+            /* Hidden initially */
+        }
+
+        /* Make the audio controls transparent */
+        audio {
+            -webkit-appearance: none; /* Remove default styling for WebKit browsers (Chrome, Safari) */
+            appearance: none; /* Remove default styling for other browsers */
+            background-color: transparent;
+            border: none;
+        }
+        audio::-webkit-media-controls-panel {
+            background-color: transparent !important;
+        }
+        
+        audio::-webkit-media-controls-play-button {
+            background-color: transparent !important;
+        }
+
+        audio::-webkit-media-controls-volume-slider {
+            background-color: transparent !important;
+        }
+        
+        audio::-webkit-media-controls-mute-button {
+            background-color: transparent !important;
+        }
+
+        /* For Firefox */
+        audio::-moz-controls {
+            background-color: transparent !important;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Click Play !!</h2>
+    <audio id="backgroundMusic" autoplay controls>
+        <source src="https://ia801804.us.archive.org/35/items/coldplay-yellow/Coldplay%20-%20Yellow.mp3"
+            type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <br/>
+    <div class="card">
+        <h1>Would you do the honor of going out with me?</h1>
+        <div class="buttons">
+            <button id="yesButton">❤️ Yes</button>
+            <button id="noButton">💔 No</button>
+        </div>
+        <div id="responseText">yay! I will make sure you will not regret this decision</div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const yesButton = document.getElementById('yesButton');
+        const responseText = document.getElementById('responseText')
+        const backgroundMusic = document.getElementById('backgroundMusic');
+
+        // Play background music when page loads
+        $(document).ready(function () {
+            backgroundMusic.volume = 0.5;
+            backgroundMusic.currentTime = 34;
+        });
+
+        // Show response text when "Yes" button is clicked
+        yesButton.addEventListener('click', () => {
+            responseText.style.display = 'block';
+        });
+
+        // Move "No" button on hover
+        $("#noButton").on({
+            mouseover: function () {
+                const maxX = $(window).width() - $(this).outerWidth(); // Ensure it stays within the viewport horizontally
+                const maxY = $(window).height() - $(this).outerHeight(); // Ensure it stays within the viewport vertically
+
+                $(this).css({
+                    left: (Math.random() * 200) + "px",
+                    top: (Math.random() * 200) + "px",
+                });
+
+                // Optional: Add rotation effect to the emoji on hover
+                $("#emoji").css("transform", "rotate(180deg) scale(1.5)");
+            },
+        });
+    </script>
+</body>
+
+</html>
