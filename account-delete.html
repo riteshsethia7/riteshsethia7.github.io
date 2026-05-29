@@ -1,115 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Deletion Request</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-            line-height: 1.6;
-            color: #333;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gyanshala - Ek Kadam | Account Deletion</title>
 
-        h1, h2 {
-            color: #222;
-        }
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+        line-height: 1.7;
+        color: #333;
+        background: #fafafa;
+    }
 
-        .container {
-            background: #f8f8f8;
-            padding: 24px;
-            border-radius: 8px;
-        }
+    .container {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
 
-        .email-box {
-            background: #fff;
-            border-left: 4px solid #4285F4;
-            padding: 12px;
-            margin: 16px 0;
-        }
+    h1 {
+        color: #222;
+        margin-bottom: 10px;
+    }
 
-        code {
-            background: #eee;
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
+    h2 {
+        color: #444;
+        margin-top: 30px;
+    }
 
-        ul {
-            padding-left: 20px;
-        }
-    </style>
+    .highlight {
+        background: #f5f5f5;
+        padding: 15px;
+        border-left: 4px solid #4285F4;
+        margin: 15px 0;
+    }
+
+    code {
+        background: #eee;
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    ul, ol {
+        padding-left: 24px;
+    }
+
+    .footer {
+        margin-top: 40px;
+        font-size: 14px;
+        color: #666;
+    }
+</style>
 </head>
+
 <body>
 
 <div class="container">
 
-    <h1>Account Deletion Request</h1>
+    <h1>Gyanshala - Ek Kadam</h1>
 
     <p>
-        This page explains how users can request deletion of their account and
-        associated data for the application.
+        This account deletion page is provided for users of
+        <strong>Gyanshala - Ek Kadam</strong>
+        (<code>com.satyamarg.gyanshala</code>),
+        developed and published by
+        <strong>Broken Heartware</strong>.
     </p>
 
-    <h2>How to Request Account Deletion</h2>
+    <p>
+        In accordance with Google Play's User Data policy, users may request
+        deletion of their account and associated data either directly from
+        within the application or through the process described below.
+    </p>
+
+    <h2>Delete Your Account Within the App</h2>
+
+    <p>
+        Users can delete their account directly from within the
+        Gyanshala - Ek Kadam application using the account deletion option
+        available in the app settings/profile section.
+    </p>
+
+    <h2>Request Account Deletion via Email</h2>
+
+    <p>
+        If you are unable to access the application, you may request account
+        deletion by contacting us.
+    </p>
 
     <ol>
-        <li>Open your registered email account.</li>
-        <li>Send an email from the same email address used to sign in to the app.</li>
-        <li>Send the request to:
-            <div class="email-box">
-                <strong>Email:</strong> mighty.dev.pro@gmail.com
+        <li>Open the email account associated with your app account.</li>
+
+        <li>Send an email to:
+            <div class="highlight">
+                <strong>mighty.dev.pro@gmail.com</strong>
             </div>
         </li>
+
         <li>Use the subject:
-            <div class="email-box">
-                <strong>Account Deletion Request</strong>
+            <div class="highlight">
+                <strong>Account Deletion Request - Gyanshala</strong>
             </div>
         </li>
-        <li>Include your registered email address and a request to delete your account.</li>
+
+        <li>Include:
+            <ul>
+                <li>Your registered email address.</li>
+                <li>Your display name (if applicable).</li>
+                <li>A statement requesting permanent deletion of your account.</li>
+            </ul>
+        </li>
     </ol>
 
     <h2>Data That Will Be Deleted</h2>
 
-    <p>Upon successful verification of your request, the following data associated with your account will be deleted:</p>
+    <p>
+        Upon successful verification and processing of your request, we will
+        permanently delete data associated with your account, including:
+    </p>
 
     <ul>
-        <li>User account information stored by the application.</li>
-        <li>User preferences and settings stored by the application.</li>
-        <li>Any application data associated with your account.</li>
+        <li>User profile information.</li>
+        <li>Firestore records associated with the account.</li>
+        <li>User preferences and application settings.</li>
+        <li>Application-generated user data associated with the account.</li>
     </ul>
+
+    <h2>Google Sign-In Users</h2>
+
+    <p>
+        Gyanshala - Ek Kadam uses Google Sign-In for authentication.
+        Deleting your app account removes data stored by the application.
+        Data maintained directly by Google remains subject to Google's own
+        account management and retention policies.
+    </p>
 
     <h2>Data Retention</h2>
 
     <p>
-        Certain information may be retained if required for legal, security,
-        fraud prevention, or regulatory compliance purposes.
+        Certain limited information may be retained where required by law,
+        security requirements, fraud prevention measures, dispute resolution,
+        or regulatory obligations.
     </p>
 
     <h2>Processing Time</h2>
 
     <p>
-        Account deletion requests are typically processed within 30 days of
-        receiving and verifying the request.
+        Account deletion requests are typically processed within
+        <strong>30 days</strong> of successful verification.
     </p>
 
-    <h2>Google Sign-In Users</h2>
+    <h2>Contact Information</h2>
 
-    <p>
-        This application uses Google Sign-In for authentication. Deleting your
-        application account removes data stored by the application. Data stored
-        by Google within your Google Account is managed separately through your
-        Google Account settings.
-    </p>
+    <div class="highlight">
+        <strong>Developer:</strong> Broken Heartware<br>
+        <strong>Application:</strong> Gyanshala - Ek Kadam<br>
+        <strong>Package:</strong> com.satyamarg.gyanshala<br>
+        <strong>Email:</strong> mighty.dev.pro@gmail.com
+    </div>
 
-    <h2>Contact</h2>
-
-    <p>
-        For questions regarding account deletion, contact:
-        <strong>mighty.dev.pro@gmail.com</strong>
-    </p>
+    <div class="footer">
+        Last Updated: May 2026
+    </div>
 
 </div>
 
