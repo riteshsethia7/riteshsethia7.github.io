@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opening Quoridor on Play Store...</title>
+  
+  <!-- Direct Play Store Intent for Android WebViews -->
+  <meta http-equiv="refresh" content="0;url=intent://details?id=com.ritbro.quoridor#Intent;scheme=market;package=com.android.vending;end;">
+  
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #0d1117;
+      color: #c9d1d9;
+      text-align: center;
+      padding: 20px;
+    }
+    .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      max-width: 360px;
+      width: 100%;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 12px 24px;
+      background-color: #01875f; /* Google Play Green */
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Redirecting to Play Store...</h2>
+    <p>If the Google Play Store doesn't open automatically, tap the button below:</p>
+    <a id="store-link" class="btn" href="https://play.google.com/store/apps/details?id=com.ritbro.quoridor">
+      Open in Play Store
+    </a>
+  </div>
+
+  <script>
+    const playStoreUrl = "https://play.google.com/store/apps/details?id=com.ritbro.quoridor";
+    const intentUrl = "intent://details?id=com.ritbro.quoridor#Intent;scheme=market;package=com.android.vending;end;";
+
+    // Trigger Android Play Store native app handoff
+    if (/android/i.test(navigator.userAgent)) {
+      window.location.href = intentUrl;
+      // Fallback to standard web link if intent fails
+      setTimeout(() => {
+        window.location.href = playStoreUrl;
+      }, 1500);
+    } else {
+      // Standard redirect for non-Android devices
+      window.location.href = playStoreUrl;
+    }
+  </script>
+</body>
+</html>
