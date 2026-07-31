@@ -1,0 +1,40 @@
+<svg id="clouds-scene" viewBox="0 0 1600 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin slice" width="100%" height="100%" aria-hidden="true" focusable="false">
+  <style>
+    #clouds-scene .cloud-track { animation: cl-drift 70s linear infinite; }
+    @keyframes cl-drift { from { transform: translateX(0); } to { transform: translateX(-800px); } }
+    @media (prefers-reduced-motion: reduce) {
+      #clouds-scene .cloud-track { animation: none; }
+    }
+  </style>
+  <g class="cloud-track">
+    <g fill="#FFFFFF" opacity=".75">
+      <ellipse cx="120" cy="60" rx="60" ry="24"/>
+      <ellipse cx="170" cy="48" rx="40" ry="20"/>
+      <ellipse cx="80" cy="50" rx="34" ry="18"/>
+    </g>
+    <g fill="#FFFFFF" opacity=".6">
+      <ellipse cx="520" cy="90" rx="50" ry="20"/>
+      <ellipse cx="560" cy="80" rx="32" ry="16"/>
+    </g>
+    <g fill="#FFFFFF" opacity=".7">
+      <ellipse cx="920" cy="55" rx="56" ry="22"/>
+      <ellipse cx="965" cy="45" rx="36" ry="18"/>
+      <ellipse cx="885" cy="48" rx="30" ry="16"/>
+    </g>
+    <!-- duplicate set offset by 800 for seamless loop -->
+    <g fill="#FFFFFF" opacity=".75" transform="translate(800,0)">
+      <ellipse cx="120" cy="60" rx="60" ry="24"/>
+      <ellipse cx="170" cy="48" rx="40" ry="20"/>
+      <ellipse cx="80" cy="50" rx="34" ry="18"/>
+    </g>
+    <g fill="#FFFFFF" opacity=".6" transform="translate(800,0)">
+      <ellipse cx="520" cy="90" rx="50" ry="20"/>
+      <ellipse cx="560" cy="80" rx="32" ry="16"/>
+    </g>
+    <g fill="#FFFFFF" opacity=".7" transform="translate(800,0)">
+      <ellipse cx="920" cy="55" rx="56" ry="22"/>
+      <ellipse cx="965" cy="45" rx="36" ry="18"/>
+      <ellipse cx="885" cy="48" rx="30" ry="16"/>
+    </g>
+  </g>
+</svg>

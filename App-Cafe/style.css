@@ -1,0 +1,372 @@
+/* =========================================================================
+   COZY CAT CAFÉ — STYLESHEET
+   Sections: Reset, Variables, Base, Decorative Scene, Latte Track,
+   Phone Shell, Header, Cards, Paw Button, Cat Mounts, FX Layer,
+   Keyframes, Accessibility, Responsive
+   ========================================================================= */
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+ul { margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+button { font: inherit; }
+
+/* ---------- Variables ---------- */
+:root {
+  --bg: #FFF8F2;
+  --card-bg: #FFFFFF;
+  --primary: #FFC8D6;
+  --primary-dark: #FF9EB8;
+  --secondary: #FFE8EF;
+  --paw: #FFC98A;
+  --paw-dark: #FFB268;
+  --text: #5A463A;
+  --shadow: rgba(0, 0, 0, .08);
+  --shadow-strong: rgba(0, 0, 0, .16);
+
+  --font-display: 'Fredoka', system-ui, sans-serif;
+  --font-body: 'Quicksand', system-ui, sans-serif;
+
+  --phone-max: 430px;
+  --scallop-size: 34px;
+}
+
+/* ---------- Base ---------- */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+/* =========================================================================
+   DECORATIVE DESKTOP SCENE (hidden below 900px)
+   ========================================================================= */
+.scene {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  display: none;
+}
+.scene-clouds {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 180px;
+  opacity: .9;
+}
+.scene-panel {
+  position: fixed;
+  top: 0; bottom: 0;
+  width: clamp(200px, 24vw, 360px);
+}
+.scene-left { left: 0; }
+.scene-right { right: 0; }
+.scene-art { position: absolute; inset: 0; }
+.bean-mount {
+  position: absolute;
+  top: 30.5%;
+  left: 50%;
+  width: 84px;
+  height: 90px;
+  transform: translate(-50%, -78%);
+}
+
+/* =========================================================================
+   LATTE — walking cat strip along the bottom edge (mobile + desktop)
+   ========================================================================= */
+.latte-track {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  height: 58px;
+  z-index: 50; /* walks in front of the phone, along the very bottom edge */
+  pointer-events: none;
+  overflow: hidden;
+}
+.latte-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 96px;
+  height: 60px;
+  transform: translateX(-120px) scaleX(1);
+}
+
+/* =========================================================================
+   PHONE SHELL — the café menu
+   ========================================================================= */
+.phone {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: var(--phone-max);
+  margin: 0 auto;
+  min-height: 100dvh;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(255,200,214,.15), transparent 40%),
+    radial-gradient(rgba(90,70,58,.035) 1px, transparent 1px);
+  background-size: auto, 14px 14px;
+  display: flex;
+  flex-direction: column;
+}
+.phone-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 90px; /* room for Mochi + scallop */
+}
+
+/* =========================================================================
+   HEADER
+   ========================================================================= */
+.phone-header {
+  text-align: center;
+  padding: 44px 24px 18px;
+}
+.phone-icon {
+  font-size: 2.4rem;
+  line-height: 1;
+  margin-bottom: 6px;
+  animation: icon-bob 3.6s ease-in-out infinite;
+}
+.phone-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.7rem;
+  margin: 0 0 4px;
+  color: var(--text);
+  cursor: pointer;
+  user-select: none;
+  transition: transform .15s ease;
+}
+.phone-title:active { transform: scale(.97); }
+.phone-subtitle {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: .95rem;
+  margin: 0;
+  color: var(--text);
+  opacity: .75;
+}
+
+/* =========================================================================
+   CARD LIST
+   ========================================================================= */
+.card-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 10px 20px 8px;
+}
+.card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 10px 12px 10px 10px;
+  box-shadow: 0 4px 14px var(--shadow);
+  cursor: pointer;
+  transition: transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .28s ease;
+}
+.card:hover,
+.card:focus-within {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 26px var(--shadow-strong);
+}
+.card-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 15px;
+  object-fit: cover;
+  background: var(--secondary);
+  flex-shrink: 0;
+  transition: transform .3s ease;
+}
+.card:hover .card-logo { transform: rotate(-7deg) scale(1.06); }
+.card-name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.25;
+}
+.card-spacer { flex: 1; }
+
+/* =========================================================================
+   PAW BUTTON
+   ========================================================================= */
+.paw-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--paw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  text-decoration: none;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(255, 158, 74, .5);
+  transition: transform .2s ease, background .2s ease;
+}
+.paw-btn:hover { background: var(--paw-dark); animation: paw-wiggle .5s ease; }
+.card:hover .paw-btn { animation: paw-bounce .6s ease; }
+.paw-btn:active { transform: scale(.9); }
+
+/* =========================================================================
+   CAT MOUNTS
+   ========================================================================= */
+.mochi-mount {
+  width: 210px;
+  height: 124px;
+  margin: 6px auto 0;
+  cursor: pointer;
+}
+
+/* scalloped café-menu border at the bottom of the phone */
+.phone-scallop {
+  height: var(--scallop-size);
+  width: 100%;
+  background-color: var(--primary);
+  background-image: radial-gradient(circle at 9px 0, var(--bg) 9px, transparent 9.5px);
+  background-repeat: repeat-x;
+  background-size: 18px 18px;
+  flex-shrink: 0;
+}
+
+/* =========================================================================
+   FX LAYER — hearts, sparkles, petals, paw rain
+   ========================================================================= */
+#fx-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden;
+}
+.fx-heart, .fx-sparkle, .fx-paw, .fx-petal {
+  position: absolute;
+  will-change: transform, opacity;
+}
+.fx-heart {
+  font-size: 1.1rem;
+  animation: fx-heart-rise .9s ease-out forwards;
+}
+.fx-sparkle {
+  font-size: .85rem;
+  animation: fx-sparkle-pop .6s ease-out forwards;
+}
+.fx-paw {
+  width: 22px;
+  height: 22px;
+  top: -30px;
+  animation: fx-paw-fall linear forwards;
+}
+.fx-petal {
+  width: 13px;
+  height: 13px;
+  top: -20px;
+  opacity: .85;
+  background: var(--primary);
+  border-radius: 0 60% 0 60%;
+  animation: fx-petal-fall linear forwards;
+}
+
+/* =========================================================================
+   KEYFRAMES
+   ========================================================================= */
+@keyframes icon-bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(-4deg); }
+}
+@keyframes paw-wiggle {
+  0%, 100% { transform: rotate(0deg) scale(1.12); }
+  25% { transform: rotate(-14deg) scale(1.12); }
+  75% { transform: rotate(14deg) scale(1.12); }
+}
+@keyframes paw-bounce {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-6px); }
+  70% { transform: translateY(1px); }
+}
+@keyframes fx-heart-rise {
+  0% { opacity: 1; transform: translate(0, 0) scale(.5) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx, 0px), -70px) scale(1.15) rotate(var(--dr, 10deg)); }
+}
+@keyframes fx-sparkle-pop {
+  0% { opacity: 1; transform: translate(0,0) scale(0); }
+  50% { opacity: 1; transform: translate(var(--dx,0px), var(--dy,0px)) scale(1.2); }
+  100% { opacity: 0; transform: translate(var(--dx,0px), var(--dy,0px)) scale(.4); }
+}
+@keyframes fx-paw-fall {
+  to { transform: translateY(105vh) rotate(160deg); opacity: 0; }
+}
+@keyframes fx-petal-fall {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(18px, 25vh) rotate(90deg); }
+  50% { transform: translate(-14px, 50vh) rotate(180deg); }
+  75% { transform: translate(16px, 75vh) rotate(270deg); }
+  100% { transform: translate(-10px, 105vh) rotate(360deg); opacity: .2; }
+}
+
+/* =========================================================================
+   ACCESSIBILITY
+   ========================================================================= */
+a:focus-visible,
+.card:focus-visible,
+.mochi-mount:focus-visible,
+.phone-title:focus-visible {
+  outline: 3px solid var(--primary-dark);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+.paw-btn:focus-visible {
+  outline: 3px solid var(--paw-dark);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phone-icon,
+  .paw-btn:hover,
+  .card:hover .paw-btn,
+  .fx-heart, .fx-sparkle, .fx-paw, .fx-petal {
+    animation: none !important;
+  }
+  * { scroll-behavior: auto !important; }
+}
+
+/* =========================================================================
+   RESPONSIVE
+   ========================================================================= */
+@media (min-width: 900px) {
+  .scene { display: block; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .phone {
+    min-height: auto;
+    margin: 5vh auto;
+    border-radius: 34px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px var(--shadow-strong), 0 2px 0 rgba(255,255,255,.6) inset;
+  }
+}
+
+@media (max-width: 899.98px) {
+  .bean-mount, .scene { display: none; }
+}

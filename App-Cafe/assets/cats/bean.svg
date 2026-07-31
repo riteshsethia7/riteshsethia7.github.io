@@ -1,0 +1,55 @@
+<svg id="bean" viewBox="0 0 140 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bean the shelf cat" width="100%" height="100%">
+  <style>
+    #bean .b-eye { transform-box: fill-box; transform-origin: center; animation: b-blink 6s ease-in-out infinite; }
+    #bean .b-eye.right { animation-delay: .08s; }
+    #bean .b-tail-tip { transform-box: fill-box; transform-origin: left center; animation: b-tail 5s ease-in-out infinite; }
+    #bean .b-paw-wave { transform-box: fill-box; transform-origin: top right; opacity: 0; animation: b-wave-cycle 9s ease-in-out infinite; }
+    #bean .b-paw-rest { animation: b-paw-rest-cycle 9s ease-in-out infinite; }
+    @keyframes b-blink { 0%, 90%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+    @keyframes b-tail { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(8deg); } }
+    @keyframes b-wave-cycle {
+      0%, 75%, 100% { opacity: 0; transform: rotate(0deg); }
+      80% { opacity: 1; transform: rotate(-15deg); }
+      85% { transform: rotate(15deg); }
+      90% { transform: rotate(-10deg); }
+      94% { opacity: 1; transform: rotate(0deg); }
+    }
+    @keyframes b-paw-rest-cycle { 0%, 75%, 94%, 100% { opacity: 1; } 80%, 90% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) {
+      #bean .b-eye, #bean .b-tail-tip, #bean .b-paw-wave, #bean .b-paw-rest { animation: none; opacity: 1; }
+    }
+  </style>
+
+  <!-- curled tail -->
+  <path d="M100 128 C 128 128, 132 100, 112 92" stroke="#9C9C9C" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <path class="b-tail-tip" d="M112 92 C 108 88, 100 88, 96 94" stroke="#9C9C9C" stroke-width="10" fill="none" stroke-linecap="round"/>
+
+  <!-- body sitting -->
+  <ellipse cx="68" cy="112" rx="42" ry="34" fill="#B7B7B7"/>
+  <!-- resting paws together -->
+  <ellipse class="b-paw-rest" cx="56" cy="140" rx="12" ry="8" fill="#D8D8D8"/>
+  <ellipse class="b-paw-rest" cx="80" cy="140" rx="12" ry="8" fill="#D8D8D8"/>
+  <!-- waving paw -->
+  <ellipse class="b-paw-wave" cx="92" cy="118" rx="10" ry="16" fill="#D8D8D8"/>
+
+  <!-- head -->
+  <circle cx="66" cy="62" r="36" fill="#C2C2C2"/>
+  <path d="M40 40 L32 12 L58 32 Z" fill="#C2C2C2"/>
+  <path d="M43 36 L38 22 L54 30 Z" fill="#FFC8D6"/>
+  <path d="M88 32 L102 8 L100 34 Z" fill="#C2C2C2"/>
+  <path d="M90 30 L99 16 L96 32 Z" fill="#FFC8D6"/>
+
+  <ellipse class="b-eye left" cx="52" cy="62" rx="5" ry="6.5" fill="#5A463A"/>
+  <ellipse class="b-eye right" cx="80" cy="62" rx="5" ry="6.5" fill="#5A463A"/>
+  <circle cx="53.5" cy="59.5" r="1.5" fill="#fff"/>
+  <circle cx="81.5" cy="59.5" r="1.5" fill="#fff"/>
+
+  <path d="M60 72 L72 72 L66 78 Z" fill="#FFC8D6"/>
+  <path d="M66 78 Q66 82 58 84 M66 78 Q66 82 74 84" stroke="#5A463A" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+
+  <path d="M40 68 L26 65 M40 71 L25 72" stroke="#fff" stroke-width="1" opacity=".6" stroke-linecap="round"/>
+  <path d="M92 68 L106 65 M92 71 L107 72" stroke="#fff" stroke-width="1" opacity=".6" stroke-linecap="round"/>
+
+  <ellipse cx="46" cy="70" rx="7" ry="4.5" fill="#FFC8D6" opacity=".5"/>
+  <ellipse cx="86" cy="70" rx="7" ry="4.5" fill="#FFC8D6" opacity=".5"/>
+</svg>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>App Café — Cute Apps Made With Love</title>
+  <meta name="description" content="A cozy little café menu of cute apps, made with love.">
+  <meta name="theme-color" content="#FFF8F2">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%95%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ DECORATIVE DESKTOP CAFÉ SCENE (hidden on mobile) ============ -->
+  <div class="scene" aria-hidden="true">
+    <div class="scene-clouds">
+      <img class="scene-art" src="assets/background/clouds.svg" alt="" width="1600" height="200">
+    </div>
+    <div class="scene-panel scene-left">
+      <img class="scene-art" src="assets/background/left-scene.svg" alt="" width="320" height="900">
+      <div class="bean-mount">
+        <!-- Bean: sits on the shelf, occasionally waves — self-animating, no JS needed -->
+        <svg id="bean" viewBox="0 0 140 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bean the shelf cat" width="100%" height="100%">
+          <style>
+            #bean .b-eye { transform-box: fill-box; transform-origin: center; animation: b-blink 6s ease-in-out infinite; }
+            #bean .b-eye.right { animation-delay: .08s; }
+            #bean .b-tail-tip { transform-box: fill-box; transform-origin: left center; animation: b-tail 5s ease-in-out infinite; }
+            #bean .b-paw-wave { transform-box: fill-box; transform-origin: top right; opacity: 0; animation: b-wave-cycle 9s ease-in-out infinite; }
+            #bean .b-paw-rest { animation: b-paw-rest-cycle 9s ease-in-out infinite; }
+            @keyframes b-blink { 0%, 90%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+            @keyframes b-tail { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(8deg); } }
+            @keyframes b-wave-cycle {
+              0%, 75%, 100% { opacity: 0; transform: rotate(0deg); }
+              80% { opacity: 1; transform: rotate(-15deg); }
+              85% { transform: rotate(15deg); }
+              90% { transform: rotate(-10deg); }
+              94% { opacity: 1; transform: rotate(0deg); }
+            }
+            @keyframes b-paw-rest-cycle { 0%, 75%, 94%, 100% { opacity: 1; } 80%, 90% { opacity: 0; } }
+            @media (prefers-reduced-motion: reduce) {
+              #bean .b-eye, #bean .b-tail-tip, #bean .b-paw-wave, #bean .b-paw-rest { animation: none; opacity: 1; }
+            }
+          </style>
+          <path d="M100 128 C 128 128, 132 100, 112 92" stroke="#9C9C9C" stroke-width="12" fill="none" stroke-linecap="round"/>
+          <path class="b-tail-tip" d="M112 92 C 108 88, 100 88, 96 94" stroke="#9C9C9C" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <ellipse cx="68" cy="112" rx="42" ry="34" fill="#B7B7B7"/>
+          <ellipse class="b-paw-rest" cx="56" cy="140" rx="12" ry="8" fill="#D8D8D8"/>
+          <ellipse class="b-paw-rest" cx="80" cy="140" rx="12" ry="8" fill="#D8D8D8"/>
+          <ellipse class="b-paw-wave" cx="92" cy="118" rx="10" ry="16" fill="#D8D8D8"/>
+          <circle cx="66" cy="62" r="36" fill="#C2C2C2"/>
+          <path d="M40 40 L32 12 L58 32 Z" fill="#C2C2C2"/>
+          <path d="M43 36 L38 22 L54 30 Z" fill="#FFC8D6"/>
+          <path d="M88 32 L102 8 L100 34 Z" fill="#C2C2C2"/>
+          <path d="M90 30 L99 16 L96 32 Z" fill="#FFC8D6"/>
+          <ellipse class="b-eye left" cx="52" cy="62" rx="5" ry="6.5" fill="#5A463A"/>
+          <ellipse class="b-eye right" cx="80" cy="62" rx="5" ry="6.5" fill="#5A463A"/>
+          <circle cx="53.5" cy="59.5" r="1.5" fill="#fff"/>
+          <circle cx="81.5" cy="59.5" r="1.5" fill="#fff"/>
+          <path d="M60 72 L72 72 L66 78 Z" fill="#FFC8D6"/>
+          <path d="M66 78 Q66 82 58 84 M66 78 Q66 82 74 84" stroke="#5A463A" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          <path d="M40 68 L26 65 M40 71 L25 72" stroke="#fff" stroke-width="1" opacity=".6" stroke-linecap="round"/>
+          <path d="M92 68 L106 65 M92 71 L107 72" stroke="#fff" stroke-width="1" opacity=".6" stroke-linecap="round"/>
+          <ellipse cx="46" cy="70" rx="7" ry="4.5" fill="#FFC8D6" opacity=".5"/>
+          <ellipse cx="86" cy="70" rx="7" ry="4.5" fill="#FFC8D6" opacity=".5"/>
+        </svg>
+      </div>
+    </div>
+    <div class="scene-panel scene-right">
+      <img class="scene-art" src="assets/background/right-scene.svg" alt="" width="320" height="900">
+    </div>
+  </div>
+
+  <!-- Latte walks along the bottom edge of the whole page, mobile + desktop -->
+  <div class="latte-track" aria-hidden="true">
+    <div class="latte-wrap" id="latte-wrap">
+      <svg id="latte" viewBox="0 0 170 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Latte the walking cat" width="100%" height="100%">
+        <style>
+          #latte .l-leg { transform-box: fill-box; transform-origin: top center; animation: l-walk-a .48s ease-in-out infinite; }
+          #latte .l-leg.b { animation-name: l-walk-b; }
+          #latte .l-tail { transform-box: fill-box; transform-origin: right center; animation: l-tail-sway 1.6s ease-in-out infinite; }
+          #latte .l-eye { transform-box: fill-box; transform-origin: center; animation: l-blink 5s ease-in-out infinite; }
+          #latte .l-head-group { transform-box: fill-box; transform-origin: center; }
+          #latte .l-ear { transform-box: fill-box; transform-origin: bottom center; }
+          #latte.paused .l-leg { animation-play-state: paused; }
+          #latte.paused .l-head-group { animation: l-look 2.6s ease-in-out; }
+          #latte.paused .l-ear { animation: l-ear-twitch 2.6s ease-in-out; }
+          @keyframes l-walk-a { 0%, 100% { transform: rotate(18deg); } 50% { transform: rotate(-18deg); } }
+          @keyframes l-walk-b { 0%, 100% { transform: rotate(-18deg); } 50% { transform: rotate(18deg); } }
+          @keyframes l-tail-sway { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(10deg); } }
+          @keyframes l-blink { 0%, 92%, 100% { transform: scaleY(1); } 96% { transform: scaleY(0.1); } }
+          @keyframes l-look { 0%, 100% { transform: rotate(0deg); } 30% { transform: rotate(10deg); } 60% { transform: rotate(-10deg); } 85% { transform: rotate(0deg); } }
+          @keyframes l-ear-twitch { 0%, 40%, 100% { transform: rotate(0deg); } 45% { transform: rotate(-12deg); } 50% { transform: rotate(6deg); } }
+          @media (prefers-reduced-motion: reduce) {
+            #latte .l-leg, #latte .l-tail, #latte .l-eye, #latte.paused .l-head-group, #latte.paused .l-ear { animation: none; }
+          }
+        </style>
+        <rect class="l-leg" x="38" y="55" width="9" height="30" rx="4" fill="#D98E4A"/>
+        <rect class="l-leg b" x="54" y="55" width="9" height="30" rx="4" fill="#E4A05F"/>
+        <path class="l-tail" d="M118 55 C 150 45, 155 15, 132 8" stroke="#D98E4A" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <ellipse cx="90" cy="52" rx="52" ry="26" fill="#E9A85E"/>
+        <path d="M55 34 Q80 28 108 34" stroke="#C97D3C" stroke-width="4" fill="none" stroke-linecap="round" opacity=".6"/>
+        <path d="M50 48 Q80 42 115 48" stroke="#C97D3C" stroke-width="4" fill="none" stroke-linecap="round" opacity=".6"/>
+        <rect class="l-leg b" x="108" y="58" width="9" height="30" rx="4" fill="#D98E4A"/>
+        <rect class="l-leg" x="124" y="58" width="9" height="30" rx="4" fill="#E4A05F"/>
+        <g class="l-head-group">
+          <circle cx="134" cy="38" r="26" fill="#E9A85E"/>
+          <path class="l-ear" d="M114 22 L108 4 L128 16 Z" fill="#E9A85E"/>
+          <path class="l-ear" d="M148 16 L160 0 L156 22 Z" fill="#E9A85E"/>
+          <path d="M117 20 L114 10 L124 17 Z" fill="#FFC8D6"/>
+          <path d="M150 18 L157 8 L152 20 Z" fill="#FFC8D6"/>
+          <ellipse class="l-eye" cx="126" cy="36" rx="4.5" ry="5.5" fill="#5A463A"/>
+          <ellipse class="l-eye" cx="143" cy="34" rx="4.5" ry="5.5" fill="#5A463A"/>
+          <circle cx="127.5" cy="34" r="1.3" fill="#fff"/>
+          <circle cx="144.5" cy="32" r="1.3" fill="#fff"/>
+          <path d="M132 44 L138 44 L135 48 Z" fill="#FFC8D6"/>
+          <path d="M128 50 Q135 54 141 50" stroke="#5A463A" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          <path d="M120 44 L108 42 M120 47 L107 48" stroke="#fff" stroke-width="1" opacity=".7" stroke-linecap="round"/>
+          <path d="M146 44 L158 42 M146 47 L159 48" stroke="#fff" stroke-width="1" opacity=".7" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ============ THE PHONE — CAFÉ MENU ============ -->
+  <main class="phone" id="phone">
+    <div class="phone-inner">
+
+      <header class="phone-header">
+        <div class="phone-icon" aria-hidden="true">☕</div>
+        <h1 class="phone-title" id="site-title" title="Shh... try clicking me a few times">App Café</h1>
+        <p class="phone-subtitle" id="site-subtitle">Cute apps made with ❤️</p>
+      </header>
+
+      <ul class="card-list" id="card-list" aria-label="Our apps"></ul>
+
+      <div class="mochi-mount" id="mochi-mount" tabindex="0" role="button" aria-label="Mochi the sleeping cat — tap to wake her up">
+        <svg id="mochi" viewBox="0 0 220 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mochi the sleeping cat" width="100%" height="100%">
+          <style>
+            #mochi .m-eye { transform-origin: center; transform-box: fill-box; animation: m-blink 4.5s ease-in-out infinite; }
+            #mochi .m-eye.right { animation-delay: .06s; }
+            #mochi .m-tail { transform-origin: 165px 78px; animation: m-tail-twitch 6s ease-in-out infinite; }
+            #mochi .m-yawn { opacity: 0; animation: m-yawn 11s ease-in-out infinite; }
+            #mochi .m-ear { transform-origin: bottom center; transform-box: fill-box; animation: m-ear 11s ease-in-out infinite; }
+            #mochi .m-open-eyes, #mochi .m-awake-paw { opacity: 0; }
+            #mochi.awake .m-sleep-eyes { opacity: 0; }
+            #mochi.awake .m-open-eyes { opacity: 1; }
+            #mochi.awake .m-body-group { animation: m-stretch 2.1s ease-in-out; }
+            #mochi.awake .m-awake-paw { opacity: 1; animation: m-paw-reach 2.1s ease-in-out; }
+            @keyframes m-blink { 0%, 82%, 100% { transform: scaleY(1); } 88% { transform: scaleY(0.1); } 94% { transform: scaleY(1); } }
+            @keyframes m-tail-twitch { 0%, 70%, 100% { transform: rotate(0deg); } 75% { transform: rotate(-6deg); } 85% { transform: rotate(4deg); } 92% { transform: rotate(0deg); } }
+            @keyframes m-yawn { 0%, 88%, 100% { opacity: 0; } 91%, 96% { opacity: 1; } }
+            @keyframes m-ear { 0%, 87%, 100% { transform: rotate(0deg); } 91%, 95% { transform: rotate(-8deg); } }
+            @keyframes m-stretch { 0% { transform: scale(1,1); } 35% { transform: scale(1.12,0.9) translateY(3px); } 65% { transform: scale(1.12,0.9) translateY(3px); } 100% { transform: scale(1,1); } }
+            @keyframes m-paw-reach { 0%, 100% { transform: translateX(0); } 35%,65% { transform: translateX(14px); } }
+            @media (prefers-reduced-motion: reduce) {
+              #mochi .m-eye, #mochi .m-tail, #mochi .m-yawn, #mochi .m-ear, #mochi.awake .m-body-group, #mochi.awake .m-awake-paw { animation: none; }
+            }
+          </style>
+          <path class="m-tail" d="M165 78 C 205 78, 210 40, 178 32 C 195 45, 190 68, 160 68 Z" fill="#EAD2B4"/>
+          <g class="m-body-group">
+            <ellipse cx="115" cy="92" rx="88" ry="34" fill="#F7E9D7"/>
+            <ellipse cx="70" cy="112" rx="16" ry="9" fill="#F7E9D7"/>
+            <ellipse class="m-awake-paw" cx="46" cy="110" rx="14" ry="8" fill="#F7E9D7"/>
+            <circle cx="62" cy="66" r="40" fill="#F7E9D7"/>
+            <path class="m-ear left" d="M34 38 L26 12 L52 32 Z" fill="#F7E9D7"/>
+            <path class="m-ear left" d="M37 34 L33 20 L48 30 Z" fill="#FFC8D6"/>
+            <path class="m-ear right" d="M78 32 L92 8 L96 36 Z" fill="#F7E9D7"/>
+            <path class="m-ear right" d="M80 30 L89 16 L92 32 Z" fill="#FFC8D6"/>
+            <ellipse cx="60" cy="80" rx="6" ry="5" fill="#EAD2B4" opacity=".5"/>
+            <ellipse cx="38" cy="76" rx="8" ry="5" fill="#FFC8D6" opacity=".55"/>
+            <ellipse cx="86" cy="76" rx="8" ry="5" fill="#FFC8D6" opacity=".55"/>
+            <g class="m-sleep-eyes">
+              <ellipse class="m-eye left" cx="42" cy="66" rx="7" ry="2.4" fill="#5A463A"/>
+              <ellipse class="m-eye right" cx="74" cy="64" rx="7" ry="2.4" fill="#5A463A"/>
+            </g>
+            <g class="m-open-eyes">
+              <circle cx="42" cy="65" r="6" fill="#5A463A"/>
+              <circle cx="44" cy="63" r="1.6" fill="#fff"/>
+              <circle cx="74" cy="63" r="6" fill="#5A463A"/>
+              <circle cx="76" cy="61" r="1.6" fill="#fff"/>
+            </g>
+            <path d="M56 76 L62 76 L59 80 Z" fill="#FFC8D6"/>
+            <path d="M52 82 Q59 87 66 82" stroke="#5A463A" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+            <ellipse class="m-yawn" cx="59" cy="83" rx="7" ry="6" fill="#7A5A48"/>
+          </g>
+        </svg>
+      </div>
+
+    </div>
+    <div class="phone-scallop" aria-hidden="true"></div>
+  </main>
+
+  <!-- floating fx layer for hearts / sparkles / paw rain -->
+  <div id="fx-layer" aria-hidden="true"></div>
+
+  <!-- card template -->
+  <template id="card-template">
+    <li class="card" tabindex="-1">
+      <img class="card-logo" alt="" loading="lazy">
+      <span class="card-name"></span>
+      <span class="card-spacer"></span>
+      <a class="paw-btn" target="_blank" rel="noopener noreferrer" aria-label="">
+        <span aria-hidden="true">🐾</span>
+      </a>
+    </li>
+  </template>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

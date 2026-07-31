@@ -1,0 +1,64 @@
+<svg id="mochi" viewBox="0 0 220 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mochi the sleeping cat" width="100%" height="100%">
+  <style>
+    #mochi .m-eye { transform-origin: center; transform-box: fill-box; animation: m-blink 4.5s ease-in-out infinite; }
+    #mochi .m-eye.right { animation-delay: .06s; }
+    #mochi .m-tail { transform-origin: 165px 78px; animation: m-tail-twitch 6s ease-in-out infinite; }
+    #mochi .m-yawn { opacity: 0; animation: m-yawn 11s ease-in-out infinite; }
+    #mochi .m-ear { transform-origin: bottom center; transform-box: fill-box; animation: m-ear 11s ease-in-out infinite; }
+    #mochi .m-open-eyes, #mochi .m-awake-paw { opacity: 0; }
+    #mochi.awake .m-sleep-eyes { opacity: 0; }
+    #mochi.awake .m-open-eyes { opacity: 1; }
+    #mochi.awake .m-body-group { animation: m-stretch 2.1s ease-in-out; }
+    #mochi.awake .m-awake-paw { opacity: 1; animation: m-paw-reach 2.1s ease-in-out; }
+    @keyframes m-blink { 0%, 82%, 100% { transform: scaleY(1); } 88% { transform: scaleY(0.1); } 94% { transform: scaleY(1); } }
+    @keyframes m-tail-twitch { 0%, 70%, 100% { transform: rotate(0deg); } 75% { transform: rotate(-6deg); } 85% { transform: rotate(4deg); } 92% { transform: rotate(0deg); } }
+    @keyframes m-yawn { 0%, 88%, 100% { opacity: 0; } 91%, 96% { opacity: 1; } }
+    @keyframes m-ear { 0%, 87%, 100% { transform: rotate(0deg); } 91%, 95% { transform: rotate(-8deg); } }
+    @keyframes m-stretch { 0% { transform: scale(1,1); } 35% { transform: scale(1.12,0.9) translateY(3px); } 65% { transform: scale(1.12,0.9) translateY(3px); } 100% { transform: scale(1,1); } }
+    @keyframes m-paw-reach { 0%, 100% { transform: translateX(0); } 35%,65% { transform: translateX(14px); } }
+    @media (prefers-reduced-motion: reduce) {
+      #mochi .m-eye, #mochi .m-tail, #mochi .m-yawn, #mochi .m-ear, #mochi.awake .m-body-group, #mochi.awake .m-awake-paw { animation: none; }
+    }
+  </style>
+
+  <!-- curled tail, wraps around the back of the body -->
+  <path class="m-tail" d="M165 78 C 205 78, 210 40, 178 32 C 195 45, 190 68, 160 68 Z" fill="#EAD2B4"/>
+
+  <g class="m-body-group">
+    <!-- body -->
+    <ellipse cx="115" cy="92" rx="88" ry="34" fill="#F7E9D7"/>
+    <!-- front paws tucked under chin -->
+    <ellipse cx="70" cy="112" rx="16" ry="9" fill="#F7E9D7"/>
+    <ellipse class="m-awake-paw" cx="46" cy="110" rx="14" ry="8" fill="#F7E9D7"/>
+    <!-- head -->
+    <circle cx="62" cy="66" r="40" fill="#F7E9D7"/>
+    <!-- ears -->
+    <path class="m-ear left" d="M34 38 L26 12 L52 32 Z" fill="#F7E9D7"/>
+    <path class="m-ear left" d="M37 34 L33 20 L48 30 Z" fill="#FFC8D6"/>
+    <path class="m-ear right" d="M78 32 L92 8 L96 36 Z" fill="#F7E9D7"/>
+    <path class="m-ear right" d="M80 30 L89 16 L92 32 Z" fill="#FFC8D6"/>
+    <!-- markings -->
+    <ellipse cx="60" cy="80" rx="6" ry="5" fill="#EAD2B4" opacity=".5"/>
+    <!-- cheeks -->
+    <ellipse cx="38" cy="76" rx="8" ry="5" fill="#FFC8D6" opacity=".55"/>
+    <ellipse cx="86" cy="76" rx="8" ry="5" fill="#FFC8D6" opacity=".55"/>
+    <!-- sleepy closed eyes -->
+    <g class="m-sleep-eyes">
+      <ellipse class="m-eye left" cx="42" cy="66" rx="7" ry="2.4" fill="#5A463A"/>
+      <ellipse class="m-eye right" cx="74" cy="64" rx="7" ry="2.4" fill="#5A463A"/>
+    </g>
+    <!-- open eyes shown when woken -->
+    <g class="m-open-eyes">
+      <circle cx="42" cy="65" r="6" fill="#5A463A"/>
+      <circle cx="44" cy="63" r="1.6" fill="#fff"/>
+      <circle cx="74" cy="63" r="6" fill="#5A463A"/>
+      <circle cx="76" cy="61" r="1.6" fill="#fff"/>
+    </g>
+    <!-- nose -->
+    <path d="M56 76 L62 76 L59 80 Z" fill="#FFC8D6"/>
+    <!-- closed content mouth -->
+    <path d="M52 82 Q59 87 66 82" stroke="#5A463A" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+    <!-- yawn overlay -->
+    <ellipse class="m-yawn" cx="59" cy="83" rx="7" ry="6" fill="#7A5A48"/>
+  </g>
+</svg>

@@ -1,0 +1,31 @@
+{
+  "title": "App Café",
+  "subtitle": "Cute apps made with ❤️",
+  "apps": [
+    {
+      "name": "StampIt",
+      "logo": "assets/logos/stampit.png",
+      "playstore": "https://play.google.com/store/apps/details?id=com.brokenheartware.stampit&hl=en&gl=us"
+    },
+    {
+      "name": "Gobblet Gobblers",
+      "logo": "assets/logos/gobblet-gobblers.png",
+      "playstore": "https://play.google.com/store/apps/details?id=com.broken_heartware.gobblet_gobbler&hl=en&gl=us"
+    },
+    {
+      "name": "PathBlock – Quoridor Strategy",
+      "logo": "assets/logos/quoridor.png",
+      "playstore": "https://play.google.com/store/apps/details?id=com.ritbro.quoridor&hl=en&gl=us"
+    },
+    {
+      "name": "TambolaHousie Number Generator",
+      "logo": "assets/logos/tambola.png",
+      "playstore": "https://play.google.com/store/apps/details?id=com.broken_heartware.tmabola&hl=en&gl=us"
+    },
+    {
+      "name": "Guess the Flag World Quiz Rush",
+      "logo": "assets/logos/flag-quiz.png",
+      "playstore": "https://play.google.com/store/apps/details?id=com.ritbro.flag_master_quiz&hl=en&gl=us"
+    }
+  ]
+}
