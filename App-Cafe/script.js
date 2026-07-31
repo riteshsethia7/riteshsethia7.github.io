@@ -65,10 +65,19 @@
       paw.href = app.playstore;
       paw.setAttribute('aria-label', `Open ${app.name} on Google Play`);
 
-      // whole-card click: a little sparkle burst of delight
-      li.addEventListener('click', (e) => spawnSparkles(e.clientX, e.clientY));
+      // whole-card click: sparkle burst of delight, then open the Play Store
+      // (the paw button's own click handler stops propagation, so this
+      // never double-fires when the paw itself is clicked)
+      li.addEventListener('click', (e) => {
+        spawnSparkles(e.clientX, e.clientY);
+        window.open(app.playstore, '_blank', 'noopener,noreferrer');
+      });
       li.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') spawnSparkles(...cardCenter(li));
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          spawnSparkles(...cardCenter(li));
+          window.open(app.playstore, '_blank', 'noopener,noreferrer');
+        }
       });
 
       // paw button: heart burst, then it navigates to the Play Store as normal
