@@ -295,13 +295,19 @@
   /* =======================================================================
      INIT
      ======================================================================= */
+  // each feature is independent — one throwing (e.g. a device-specific quirk)
+  // should never silently prevent the rest of the page from working
+  function safely(fn) {
+    try { fn(); } catch (err) { console.error(err); }
+  }
+
   async function init() {
     const data = await loadMenuData();
     buildCards(data);
-    setupMochi();
-    setupLatte();
-    setupTitleEasterEgg();
-    startPetalDrift();
+    safely(setupMochi);
+    safely(setupLatte);
+    safely(setupTitleEasterEgg);
+    safely(startPetalDrift);
   }
 
   if (document.readyState === 'loading') {

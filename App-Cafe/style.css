@@ -83,7 +83,11 @@ body {
    ========================================================================= */
 .latte-track {
   position: fixed;
-  left: 0; right: 0; bottom: 0;
+  left: 0; right: 0;
+  /* viewport-fit=cover lets our layout extend under the iPhone home-indicator
+     safe area, so fixed-to-the-edge content must add it back manually or it
+     renders partly hidden behind the home-indicator gesture bar */
+  bottom: env(safe-area-inset-bottom, 0px);
   height: 58px;
   z-index: 50; /* walks in front of the phone, along the very bottom edge */
   pointer-events: none;
@@ -107,6 +111,7 @@ body {
   width: 100%;
   max-width: var(--phone-max);
   margin: 0 auto;
+  min-height: 100vh; /* fallback for browsers without dvh support */
   min-height: 100dvh;
   background-color: var(--bg);
   background-image:
