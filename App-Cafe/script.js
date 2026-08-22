@@ -19,6 +19,7 @@
     title: 'App Café',
     subtitle: 'Cute apps made with ❤️',
     apps: [
+      { name: 'Nekodoro', logo: 'assets/logos/nekodoro.png', playstore: 'https://play.google.com/store/apps/details?id=com.nekodoro.nekodoro' },
       { name: 'StampIt', logo: 'assets/logos/stampit.png', playstore: 'https://play.google.com/store/apps/details?id=com.brokenheartware.stampit&hl=en&gl=us' },
       { name: 'Gobblet Gobblers', logo: 'assets/logos/gobblet-gobblers.png', playstore: 'https://play.google.com/store/apps/details?id=com.broken_heartware.gobblet_gobbler&hl=en&gl=us' },
       { name: 'PathBlock – Quoridor Strategy', logo: 'assets/logos/quoridor.png', playstore: 'https://play.google.com/store/apps/details?id=com.ritbro.quoridor&hl=en&gl=us' },
